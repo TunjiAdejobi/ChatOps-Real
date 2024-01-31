@@ -1,0 +1,78 @@
+﻿@page "/"
+@using ChatOps.Model.Models
+@using Microsoft.AspNetCore.SignalR.Client;
+
+
+<PageTitle>Index</PageTitle>
+Welcome to ChatOps App.
+
+
+<div>
+    SignalR status : @IsConnected
+    Status Updated On : @updateOn
+</div>
+
+
+<h3>Incoming Messages</h3>
+
+@foreach (var str in stringList)
+{
+    <span>@str</span>
+}
+<br />
+
+<h3>Incoming User</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>USERNAME</th>
+            <th>MESSAGE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in userList)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+                <td>@user.Message</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    private HubConnection? hubConnection;
+    public List<Model.Models.Chats> userList;
+    public List<string> stringList = new List<string>();
+    public string updateOn;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        userList = new List<Chats>();
+
+        hubConnection = new HubConnectionBuilder()            
+            .WithUrl("https://localhost:7215/signalhub")
+            .Build();
+
+        hubConnection.On<Chats>("ReceivedEmployee", (incomingEmployee) =>
+        {
+            userList.Add(incomingEmployee);
+            updateOn = DateTime.Now.ToLongTimeString();
+            StateHasChanged();
+        });
+
+        hubConnection.On<string>("ReceivedMessage", (incomingMessage) =>
+        {
+            stringList.Add(incomingMessage);
+            updateOn = DateTime.Now.ToLongTimeString();
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    public bool IsConnected =>
+        hubConnection?.State == HubConnectionState.Connected;
+}

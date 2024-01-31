@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChatOps.API</name>
+    </assembly>
+    <members>
+        <member name="T:ChatOps.API.Configurations.DatabaseConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChatOps.API.Configurations.DatabaseConfig.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="config"></param>
+        </member>
+        <member name="T:ChatOps.API.Configurations.SwaggerConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChatOps.API.Configurations.SwaggerConfig.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ChatOps.API.Configurations.SwaggerConfig.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.ConfigurationManager)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:ChatOps.API.Controllers.BaseApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChatOps.API.Controllers.BaseApiController.Ok">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.BaseApiController.Ok``1(``0)">
+            <summary>
+            Response for okay with result type T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.BaseApiController.BussinessError``1(``0)">
+            <summary>
+            Response for Conflict with result type T at all bussiness errors
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.BaseApiController.Error(System.String)">
+            <summary>
+            Envelop for error messages
+            </summary>
+            <param name="errorMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.BaseApiController.ErrorList(System.Collections.Generic.List{System.String})">
+            <summary>
+            Envelop for error messages
+            </summary>
+            <param name="errorMessages"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ChatOps.API.Controllers.ProfileManagerController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChatOps.API.Controllers.ProfileManagerController.#ctor(ChatOps.Services.Interfaces.IProfileService)">
+            <summary>
+            
+            </summary>
+            <param name="profileService"></param>
+        </member>
+        <member name="M:ChatOps.API.Controllers.ProfileManagerController.CreateUser(ChatOps.Model.Models.UserProfileRequest)">
+            <summary>
+            
+            </summary>
+            <param name="profile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.ProfileManagerController.Tokenize(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.ProfileManagerController.ActivateUserAsync(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatOps.API.Controllers.ProfileManagerController.DeactivateUser(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
